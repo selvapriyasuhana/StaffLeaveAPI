@@ -54,7 +54,7 @@ exports.update = async (req, res) => {
     if (!staff) {
       return res.json({
         status: "Error",
-        message: "Staff Leave request pending",
+        message: "Staff name not found",
       });
     }
     res.json({
