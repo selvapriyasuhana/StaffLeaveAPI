@@ -22,7 +22,7 @@ var Schema = mongoose.Schema({
   },
   Command: {
     type: String,
-    required: true,
+    required: false,
   },
   Status: {
     type: [
