@@ -1,28 +1,4 @@
-/*Service = require("../Service/Service.js");
 
-exports.index = function (err, staff) {
-  Service.Service_index(err, staff);
-  if (err) return console.error(err);
-};
-
-exports.add = function (err, staff) {
-  Service.Service_add(err, staff);
-  if (err) return console.error(err);
-};
-
-exports.view = function (err, staff) {
-  Service.Service_view(err, staff);
-  if (err) console.error(err);
-};
-
-exports.update = function (err, staff) {
-  Service.Service_update(err, staff);
-  if (err) console.error(err);
-};
-exports.Delete = function (err, staff) {
-  Service.Service_Delete(err, staff);
-  if (err) console.error(err);
-};*/
 
 const Service = require("../Service/Service.js");
 
@@ -48,7 +24,7 @@ exports.view = async (req, res) => {
     if (!staff) {
       return res.json({
         status: "Error",
-        message: "Staff Name not found",
+        message: "Staff not found",
       });
     }
     res.json({
@@ -78,12 +54,12 @@ exports.update = async (req, res) => {
     if (!staff) {
       return res.json({
         status: "Error",
-        message: "Staff Name not found",
+        message: "Staff Leave request pending",
       });
     }
     res.json({
       status: "Success",
-      message: "Staff leave request accepted successfully",
+      message: "Staff leave request updated successfully",
       data: staff,
     });
   } catch (error) {
@@ -100,12 +76,12 @@ exports.Delete = async (req, res) => {
     if (deletedCount === 0) {
       return res.json({
         status: "Error",
-        message: "Staff Name not found",
+        message: "Staff Leave request does not found",
       });
     }
     res.json({
       status: "Success",
-      message: "Staff leave request rejected successfully",
+      message: "Staff leave request deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
