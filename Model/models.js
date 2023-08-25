@@ -2,24 +2,23 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema({
   Name: {
-    required: true,
-    type: String,
+  type: String,
   },
   Leavetype: {
-    required: true,
     type: String,
   },
 
   StartDate: {
+    required: false,
     type: Date,
   },
   EndDate: {
-    required: true,
+    required: false,
     type: Date,
   },
   Reason: {
     type: String,
-    required: true,
+    required: false,
   },
   Command: {
     type: String,
@@ -37,22 +36,19 @@ var Schema = mongoose.Schema({
   },
 });
 
-Schema.path("Name").validate(async (Name) => {
-  const NameCount = await mongoose.models.list2.countDocuments({
-    Name,
+Schema.path("StartDate").validate(async function (StartDate) {
+  const existingRequest = await mongoose.models.list2.findOne({
+    StartDate,
+    Name: this.Name,
   });
-  return !NameCount;
-}, "Leave details exists");
 
-// Schema.path('mobile').validate(async (mobile) =>{
-//   const mobileCount = await mongoose.models.list.countDocuments({ mobile })
-//   return !mobileCount
-// },'Mobile already exists');
+  if (existingRequest) {
+    return false; // Validation fails if an existing request is found
+  }
 
-// var staff_Leaverequest = (module.exports = mongoose.model("list2", Schema));
-// module.exports.get = function (callback, limit) {
-//   staff_Leaverequest.find(callback).limit(limit);
-// };
+  return true; // Validation passes if no existing request is found
+}, "Leave request already exists for this date");
+
 var staff_Leaverequest = (module.exports = mongoose.model("list2", Schema));
 module.exports.get = function (limit) {
   return staff_Leaverequest.find().limit(limit).exec();
