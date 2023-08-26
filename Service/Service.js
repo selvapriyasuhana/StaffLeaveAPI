@@ -1,4 +1,3 @@
-
 const Dao = require("../Dao/Dao.js");
 
 exports.Service_index = async () => {
@@ -17,25 +16,25 @@ exports.Service_add = async (staff) => {
   }
 };
 
-exports.Service_view = async (Name) => {
+exports.Service_view = async (user_id) => {
   try {
-    return await Dao.Dao_view(Name);
+    return await Dao.Dao_view(user_id);
   } catch (error) {
     throw error;
   }
 };
 
-exports.Service_update = async (Name, staffData) => {
+exports.Service_update = async (_id, staffData) => {
   try {
-    return await Dao.Dao_update(Name, staffData);
+    return await Dao.Dao_update(_id, staffData);
   } catch (error) {
     throw error;
   }
 };
 
-exports.Service_Delete = async (Name) => {
+exports.Service_Delete = async (_id) => {
   try {
-    return await Dao.Dao_Delete(Name);
+    return await Dao.Dao_Delete(_id);
   } catch (error) {
     throw error;
   }
