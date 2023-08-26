@@ -1,5 +1,4 @@
 
-
 const Service = require("../Service/Service.js");
 
 exports.index = async (req, res) => {
@@ -20,7 +19,7 @@ exports.index = async (req, res) => {
 
 exports.view = async (req, res) => {
   try {
-    const staff = await Service.Service_view(req.params.Name);
+    const staff = await Service.Service_view(req.params.user_id);
     if (!staff) {
       return res.json({
         status: "Error",
@@ -43,14 +42,11 @@ exports.view = async (req, res) => {
 exports.update = async (req, res) => {
   try {
     const staffData = {
-      Leavetype: req.body.Leavetype,
-      StartDate: req.body.StartDate,
-      EndDate: req.body.EndDate,
-      Reason: req.body.Reason,
       Command: req.body.Command,
       Status: req.body.Status,
     };
-    const staff = await Service.Service_update(req.params.Name, staffData);
+
+    const staff = await Service.Service_update(req.params.user_id, staffData);
     if (!staff) {
       return res.json({
         status: "Error",
@@ -72,7 +68,7 @@ exports.update = async (req, res) => {
 
 exports.Delete = async (req, res) => {
   try {
-    const deletedCount = await Service.Service_Delete(req.params.Name);
+    const deletedCount = await Service.Service_Delete(req.params.user_id);
     if (deletedCount === 0) {
       return res.json({
         status: "Error",
@@ -90,3 +86,4 @@ exports.Delete = async (req, res) => {
     });
   }
 };
+
