@@ -23,7 +23,7 @@ exports.view = async (req, res) => {
     if (!staff) {
       return res.json({
         status: "Error",
-        message: "Staff not found",
+        message: "Staff  id not found",
       });
     }
     res.json({
@@ -50,7 +50,7 @@ exports.update = async (req, res) => {
     if (!staff) {
       return res.json({
         status: "Error",
-        message: "Staff name not found",
+        message: "Staff id not found",
       });
     }
     res.json({
@@ -72,12 +72,12 @@ exports.Delete = async (req, res) => {
     if (deletedCount === 0) {
       return res.json({
         status: "Error",
-        message: "Staff Leave request does not found",
+        message: "  suggested id not deleted",
       });
     }
     res.json({
       status: "Success",
-      message: "Staff leave request deleted successfully",
+      message: "Given staff id leave request deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
