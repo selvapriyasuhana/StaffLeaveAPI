@@ -1,8 +1,7 @@
-
 const router = require("express").Router();
 const staff_Leaverequest = require("../Model/models");
 
-router.get("/Leaverequest", (req, res) => {
+router.get("/", (req, res) => {
   res.json({
     status: "API Works",
     message: "Welcome to Staff leaveRequest API",
@@ -36,10 +35,10 @@ router.post("/register", async (req, res) => {
 });
 
 const Controller = require("../Controller/Controller.js");
-router.route("/staff").get(Controller.index);
+router.route("/get_all").get(Controller.index);
 
 router
-  .route("/staff/:Name")
+  .route("/:user_id")
   .get(Controller.view)
   .patch(Controller.update)
   .put(Controller.update)
