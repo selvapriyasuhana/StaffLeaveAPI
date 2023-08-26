@@ -1,8 +1,13 @@
+
+
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema({
+  id: {
+    type: Number,
+  },
   Name: {
-  type: String,
+    type: String,
   },
   Leavetype: {
     type: String,
@@ -37,7 +42,7 @@ var Schema = mongoose.Schema({
 });
 
 Schema.path("StartDate").validate(async function (StartDate) {
-  const existingRequest = await mongoose.models.list2.findOne({
+  const existingRequest = await mongoose.models.user.findOne({
     StartDate,
     Name: this.Name,
   });
@@ -49,7 +54,7 @@ Schema.path("StartDate").validate(async function (StartDate) {
   return true; // Validation passes if no existing request is found
 }, "Leave request already exists for this date");
 
-var staff_Leaverequest = (module.exports = mongoose.model("list2", Schema));
+var staff_Leaverequest = (module.exports = mongoose.model("user", Schema));
 module.exports.get = function (limit) {
   return staff_Leaverequest.find().limit(limit).exec();
 };
