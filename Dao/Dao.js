@@ -9,17 +9,17 @@ exports.Dao_index = async () => {
   }
 };
 
-exports.Dao_view = async (Name) => {
+exports.Dao_view = async (user_id) => {
   try {
-    return await staff_Leaverequest.findOne({ Name });
+    return await staff_Leaverequest.findById(user_id); // Use "user_id" directly
   } catch (error) {
     throw error;
   }
 };
 
-exports.Dao_update = async (Name, staffData) => {
+exports.Dao_update = async (_id, staffData) => {
   try {
-    return await staff_Leaverequest.findOneAndUpdate({ Name }, staffData, {
+    return await staff_Leaverequest.findByIdAndUpdate(_id, staffData, {
       new: true,
     });
   } catch (error) {
@@ -27,9 +27,9 @@ exports.Dao_update = async (Name, staffData) => {
   }
 };
 
-exports.Dao_Delete = async (Name) => {
+exports.Dao_Delete = async (_id) => {
   try {
-    const result = await staff_Leaverequest.deleteOne({ Name });
+    const result = await staff_Leaverequest.deleteOne({ _id });
     return result.deletedCount;
   } catch (error) {
     throw error;
