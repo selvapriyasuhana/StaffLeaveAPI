@@ -25,7 +25,7 @@ mongo.then(
   }
 );
 
-var port = process.env.PORT || 7000;
+var port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log("Server running on port " + port);
 });
