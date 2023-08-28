@@ -72,7 +72,7 @@ exports.Delete = async (req, res) => {
     if (deletedCount === 0) {
       return res.json({
         status: "Error",
-        message: "  suggested id not deleted",
+        message: " Given staff id not found for deleting",
       });
     }
     res.json({
