@@ -38,6 +38,27 @@ exports.view = async (req, res) => {
     });
   }
 };
+exports.view1 = async (req, res) => {
+  try {
+    const staff = await Service.Service_view1(req.params.Status);
+    if (!staff || staff.length === 0) {
+      return res.json({
+        status: "Error",
+        message: "No leave requests found with the specified status",
+      });
+    }
+    res.json({
+      status: "Success",
+      message: " Given Status of the leave requests are retrieved",
+      data: staff,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Error",
+      message: error.message,
+    });
+  }
+};
 
 exports.update = async (req, res) => {
   try {
