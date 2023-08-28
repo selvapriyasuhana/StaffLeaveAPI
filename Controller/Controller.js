@@ -38,9 +38,9 @@ exports.view = async (req, res) => {
     });
   }
 };
-exports.view1 = async (req, res) => {
+exports.see = async (req, res) => {
   try {
-    const staff = await Service.Service_view1(req.params.Status);
+    const staff = await Service.Service_see(req.params.Status);
     if (!staff || staff.length === 0) {
       return res.json({
         status: "Error",
