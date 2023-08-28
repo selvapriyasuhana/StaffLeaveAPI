@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const staff_Leaverequest = require("../Model/models");
+const staff_Leaverequest = require("../Model/models.js");
 
 router.get("/", (req, res) => {
   res.json({
@@ -36,7 +36,7 @@ router.post("/register", async (req, res) => {
 
 const Controller = require("../Controller/Controller.js");
 router.route("/get_all").get(Controller.index);
-
+router.route("/:Status").get(Controller.view1);
 router
   .route("/:user_id")
   .get(Controller.view)
