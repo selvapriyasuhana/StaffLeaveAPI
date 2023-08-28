@@ -23,6 +23,14 @@ exports.Service_view = async (user_id) => {
     throw error;
   }
 };
+exports.Service_view1 = async (Status) => {
+  try {
+    return await Dao.Dao_view1(Status);
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 exports.Service_update = async (_id, staffData) => {
   try {
