@@ -36,12 +36,10 @@ router.post("/register", async (req, res) => {
 
 const Controller = require("../Controller/Controller.js");
 router.route("/get_all").get(Controller.index);
-router.route("/:Status").get(Controller.view1);
-router
-  .route("/:user_id")
-  .get(Controller.view)
-  .patch(Controller.update)
-  .put(Controller.update)
-  .delete(Controller.Delete);
+router.route("/status/:Status").get(Controller.see);
+router.route("/user/:user_id").get(Controller.view);
+router.route("/:user_id").put(Controller.update);
+router.route("/:user_id").patch(Controller.update);
+router.route("/:user_id").delete(Controller.Delete);
 
 module.exports = router;
