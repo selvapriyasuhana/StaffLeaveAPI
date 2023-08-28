@@ -6,7 +6,7 @@ exports.index = async (req, res) => {
     const staff = await Service.Service_index();
     res.json({
       status: "Success",
-      message: "Retrieved staff leave requests successfully",
+      message: "ALL staff leave requests retrieved successfully",
       data: staff,
     });
   } catch (error) {
@@ -28,7 +28,7 @@ exports.view = async (req, res) => {
     }
     res.json({
       status: "Success",
-      message: "Retrieved staff leaverequest details successfully",
+      message: "staff leaverequest details GET by _id successfully",
       data: staff,
     });
   } catch (error) {
