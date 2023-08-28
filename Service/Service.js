@@ -23,9 +23,9 @@ exports.Service_view = async (user_id) => {
     throw error;
   }
 };
-exports.Service_view1 = async (Status) => {
+exports.Service_see = async (Status) => {
   try {
-    return await Dao.Dao_view1(Status);
+    return await Dao.Dao_see(Status);
   } catch (error) {
     throw error;
   }
