@@ -16,7 +16,7 @@ exports.Dao_view = async (user_id) => {
     throw error;
   }
 };
-exports.Dao_view1 = async (Status) => {
+exports.Dao_see = async (Status) => {
   try {
     return await staff_Leaverequest.findByStatus(Status);
   } catch (error) {
