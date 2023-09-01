@@ -35,9 +35,10 @@ router.post("/register", async (req, res) => {
 });
 
 const Controller = require("../Controller/Controller.js");
-router.route("/get_all").get(Controller.index);
-router.route("/status/:Status").get(Controller.see);
-router.route("/user/:user_id").get(Controller.view);
+router.route("/user/get_all").get(Controller.index);
+router.route("/user/status/:Status").get(Controller.see);
+router.route("/user/name/:Name").get(Controller.saw);
+router.route("/user/id/:user_id").get(Controller.view);
 router.route("/:user_id").put(Controller.update);
 router.route("/:user_id").patch(Controller.update);
 router.route("/:user_id").delete(Controller.Delete);
