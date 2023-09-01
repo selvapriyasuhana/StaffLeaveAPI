@@ -38,6 +38,28 @@ exports.view = async (req, res) => {
     });
   }
 };
+exports.saw = async (req, res) => {
+  try {
+    const staff = await Service.Service_saw(req.params.Name);
+    if (!staff || staff.length === 0) {
+      return res.json({
+        status: "Error",
+        message: "No leave requests found with the specified Name",
+      });
+    }
+    res.json({
+      status: "Success",
+      message: " Given Name of the leave requests are retrieved",
+      data: staff,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Error",
+      message: error.message,
+    });
+  }
+};
+
 exports.see = async (req, res) => {
   try {
     const staff = await Service.Service_see(req.params.Status);
