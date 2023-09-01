@@ -41,20 +41,8 @@ var Schema = mongoose.Schema({
   },
 });
 
-Schema.path("StartDate").validate(async function (StartDate) {
-  const existingRequest = await mongoose.models.user.findOne({
-    StartDate,
-    Name: this.Name,
-  });
-
-  if (existingRequest) {
-    return false; // Validation fails if an existing request is found
-  }
-
-  return true; // Validation passes if no existing request is found
-}, "Leave request already exists for this date");
-
 var staff_Leaverequest = mongoose.model("user", Schema);
+
 staff_Leaverequest.findByStatus = async function (Status) {
   try {
     return await this.find({ Status }).exec();
@@ -62,4 +50,13 @@ staff_Leaverequest.findByStatus = async function (Status) {
     throw error;
   }
 };
+
+staff_Leaverequest.findByName = async function (Name) {
+  try {
+    return await this.find({ Name }).exec();
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = staff_Leaverequest;
