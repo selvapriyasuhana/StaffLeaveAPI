@@ -40,6 +40,19 @@ var Schema = mongoose.Schema({
     default: ["pending"],
   },
 });
+Schema.path("StartDate").validate(async function (StartDate) {
+  const existingRequest = await mongoose.models.user.findOne({
+    StartDate,
+    Name: this.Name,
+  });
+
+  if (existingRequest) {
+    return false;
+  }
+
+  return true;
+});
+
 
 var staff_Leaverequest = mongoose.model("user", Schema);
 
