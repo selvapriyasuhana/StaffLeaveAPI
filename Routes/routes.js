@@ -7,6 +7,24 @@ router.get("/", (req, res) => {
     message: "Welcome to Staff leaveRequest API",
   });
 });
+router.get("/user/sortByDate", async (req, res) => {
+  try {
+    const sortedLeaveRequests = await staff_Leaverequest
+      .find({})
+      .sort({ StartDate: -1 })
+      .exec();
+
+    return res.json({
+      message: "Leave requests sorted by date",
+      data: sortedLeaveRequests,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "An error occurred",
+      error: error.message,
+    });
+  }
+});
 
 router.post("/register", async (req, res) => {
   try {
